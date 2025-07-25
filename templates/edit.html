@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Tugas</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+    <div class="container">
+        <h1>✏️ Edit Tugas</h1>
+
+        <form action="/update/{{ tugas.id }}" method="post">
+            <input type="text" name="nama" value="{{ tugas.nama }}" required>
+            <button type="submit">Update</button>
+        </form>
+
+        <br><a href="/">← Kembali</a>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Manajemen Tugas</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+    <div class="container">
+        <h1>📋 Daftar Tugas</h1>
+
+        <form action="/tambah" method="post">
+            <input type="text" name="nama" placeholder="Masukkan tugas baru..." required>
+            <button type="submit">Tambah</button>
+        </form>
+
+        <ul>
+            {% for t in tugas %}
+            <li>
+                <div>
+                    {% if t.selesai %}
+                    <s>{{ t.nama }}</s>
+                    {% else %}
+                    {{ t.nama }}
+                    {% endif %}
+                </div>
+                <div class="actions">
+                    {% if not t.selesai %}
+                    <a href="/selesai/{{ t.id }}">✅</a>
+                    {% endif %}
+                    <a href="/edit/{{ t.id }}">✏️</a>
+                    <a href="/hapus/{{ t.id }}">❌</a>
+                </div>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+
+</html>
